@@ -1,18 +1,17 @@
 {
     "name": "dimonpvt/productso",
     "type": "library",
-    "description": ":package_description",
+    "description": "Manage products and categories in Laravel 5 with Sleeping-owl admin panel",
     "keywords": [
-        "dimonpvt",
+        "dimonpvt1236",
         "productso"
     ],
     "homepage": "https://github.com/dimonpvt1236/Productso",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "dimonpvt1236",
+            "email": "dimonpvt@mail.ru",
             "role": "Developer"
         }
     ],
