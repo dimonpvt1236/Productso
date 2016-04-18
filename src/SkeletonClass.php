@@ -1,6 +1,6 @@
 <?php
 
-namespace dimonpvt\productso;
+namespace Dimonpvt\Productso;
 
 class SkeletonClass
 {
