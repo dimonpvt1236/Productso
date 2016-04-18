@@ -18,10 +18,12 @@ class PrsoCategoryController extends Controller
             $many = true;
             return view('Productso::category_show', compact('nodes','many'));
         }
-        // Иначе отдаем запрашиваемую категорию
+        // Иначе отдаем запрашиваемую категорию c товарами
         if ( $node = Category::where('slug',$slug)->first()) {
+
+            $products=Category::find($node->id)->products()->paginate(Category::$productPerPage);
             $many = false;
-            return view('Productso::category_show', compact('node','many'));
+            return view('Productso::category_show', compact('node','many','products'));
         }
         // ну или посылаем на 404 если нет такой
         abort(404);

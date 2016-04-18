@@ -31,6 +31,19 @@
         @endforeach
     </ul>
 @else
+    <h1>Пример breadcrumbs</h1>
+    <style>.ibl {display:inline-block;}</style>
+    <li class="ibl"><a href="{{URL::to('/')}}">Главная</a></li>
+    @foreach($node->getAncestors() as $descend)
+        <li class="ibl">-><a href="{{URL::to('/category/'.$descend->slug)}}">{{$descend->name}}</a></li>
+    @endforeach
+    <li class="ibl">->{{$node->name}}</li>
+
+    <h1>Вывод изображений категории</h1>
+    @foreach($node->attaches as $attach)
+        <img src="{{URL::to($attach->filename . '/w/350')}}" alt="{{$attach->alt}}" title="{{$attach->title}}">
+    @endforeach
+
     <h1>Пример вывода подкатегорий текущей вызванной</h1>
     Текущая категория: <span>{{$node->name}}</span>
     <h3>Подкатегории:</h3>
@@ -42,12 +55,16 @@
         </ul>
     @endif
 
-
-    <h1>Пример breadcrumbs</h1>
-    <style>.ibl {display:inline-block;}</style>
-    <li class="ibl"><a href="{{URL::to('/')}}">Главная</a></li>
-    @foreach($node->getAncestors() as $descend)
-        <li class="ibl">-><a href="{{URL::to('/category/'.$descend->slug)}}">{{$descend->name}}</a></li>
-    @endforeach
-    <li class="ibl">->{{$node->name}}</li>
+    <h1>Товары категории</h1>
+    <ul>
+        @foreach($products as $product)
+            <li>
+                @if($product->attaches()->count() > 0)
+                    <img src="{{URL::to($product->attaches->first()->filename . '/w/150')}}" alt="{{$product->attaches->first()->alt}} title="{{$product->attaches->first()->title}}>
+                @endif
+                <a href="{{URL::to('product/'.$product->slug.'/'.$node->id)}}">{{$product->name}}</a>
+            </li>
+        @endforeach
+    </ul>
+    {!! $products->links() !!}
 @endif

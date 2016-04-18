@@ -18,6 +18,7 @@ Admin::model('Dimonpvt\Productso\Models\PrsoCategory')->title('Категори�
 		FormItem::checkbox('showcontent', 'В спсике категорий')->defaultValue(true),
 		FormItem::ckeditor('note', 'Аннотация'),
 		FormItem::ckeditor('desc', 'Описание'),
+		Formitem::multiimages('photos','Фотки'),
 	]);
 	return $form;
 });
